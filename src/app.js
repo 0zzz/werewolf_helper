@@ -1,7 +1,6 @@
 import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
-
 import Index from './pages/index'
 
 import configStore from './store'
@@ -20,13 +19,32 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/home/index',
+      'pages/record/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      list: [{
+        pagePath: "pages/home/index",
+        text: "首页",
+        iconPath: "./icons/tab/home.png",
+        selectedIconPath: "./icons/tab/home-active.png"
+      }, {
+        pagePath: "pages/record/index",
+        text: "记录",
+        iconPath: "./icons/tab/cart.png",
+        selectedIconPath: "./icons/tab/cart-active.png"
+      }],
+      color: '#333',
+      selectedColor: '#333',
+      backgroundColor: '#fff',
+      borderStyle: 'black'
     }
   }
 

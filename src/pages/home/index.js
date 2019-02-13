@@ -22,9 +22,11 @@ class Index extends Component {
     navigationBarTitleText: '狼人杀助手',
   }
 
-  onSelItem = (key, e) => {
-    console.log(key);
-    Taro.switchTab({
+  onSelItem = e => {
+    if (!e.target.id) {
+      return
+    }
+    Taro.navigateTo({
       url: '/pages/home/index'
     })
   }
@@ -32,13 +34,12 @@ class Index extends Component {
   render () {
     return (
       <View className='index-page'>
-        <View className='content'>
+        <View className='content'  onClick={this.onSelItem.bind(this)}>
           {CONFIG_MODULE.map(item => (
             <View 
               className='card'
               key={item.key} 
               id={item.key}
-              onClick={this.onSelItem.bind(this, item.key)}
             >
               <Text className='title' >{`${item.count}人${item.name}`}</Text>
               <Text className='details'>{item.details}</Text>

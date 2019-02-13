@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
+import game from './game'
+import base from './base'
+
 
 export default combineReducers({
-  counter
+  game,
+  base,
 })
