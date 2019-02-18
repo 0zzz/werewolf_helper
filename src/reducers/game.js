@@ -1,23 +1,19 @@
-import { ADD, MINUS } from '../constants/counter'
-import { ROLE_IDENTITY } from '../constants/game'
+import { GAME } from '../constants/actionsTypes'
+import { CONFIG_MODULE } from '../constants/base';
 
-console.log(ROLE_IDENTITY);
 const INITIAL_STATE = {
-  num: 0
+  players: null,
 }
 
 export default function game (state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case ADD:
+  const { payload, type } = action;
+  switch (type) {
+    case GAME.SET_DEFAULT_CONFIG:
+      const players = CONFIG_MODULE[payload].players
       return {
         ...state,
-        num: state.num + 2
+        players,
       }
-     case MINUS:
-       return {
-         ...state,
-         num: state.num - 1
-       }
      default:
        return state
   }

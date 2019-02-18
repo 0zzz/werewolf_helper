@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
-import { add, minus, asyncAdd } from '../../actions/counter'
+import { setDefaultConfig } from '../../actions/game'
 import { CONFIG_MODULE } from '../../constants/base'
 
 import CusButton from '../../components/CusButton'
@@ -11,24 +11,15 @@ import CusButton from '../../components/CusButton'
 import './index.scss'
 
 
-@connect(({ counter }) => ({
-  counter
+@connect(({ game }) => ({
+  game
 }), {
-  addAction: add
+  // setDefaultConfigAction: setDefaultConfig
 })
 class Index extends Component {
 
-  config = {
-    navigationBarTitleText: '狼人杀助手',
-  }
-
-  onSelItem = e => {
-    if (!e.target.id) {
-      return
-    }
-    Taro.navigateTo({
-      url: '/pages/home/index'
-    })
+  componentDidMount() {
+    console.log(this.props)
   }
   
   render () {

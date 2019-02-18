@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
-import { add, minus, asyncAdd } from '../../actions/counter'
+import { setDefaultConfig } from '../../actions/game'
 import { CONFIG_MODULE } from '../../constants/base'
 
 import CusButton from '../../components/CusButton'
@@ -11,10 +11,9 @@ import CusButton from '../../components/CusButton'
 import './index.scss'
 
 
-@connect(({ counter }) => ({
-  counter
+@connect(({}) => ({
 }), {
-  addAction: add
+  setDefaultConfigAction: setDefaultConfig
 })
 class Index extends Component {
 
@@ -23,7 +22,8 @@ class Index extends Component {
   }
 
   onSelItem = (key, e) => {
-    console.log(key);
+    const { setDefaultConfigAction } = this.props;
+    setDefaultConfigAction(key);
     Taro.switchTab({
       url: '/pages/home/index'
     })

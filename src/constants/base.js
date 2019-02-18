@@ -3,6 +3,7 @@ export const CONFIG_MODULE = [{
     name: '预女猎白',
     count: 12,
     details: '预言家、女巫、猎人、白痴、四普狼',
+    players: []
 }, {
     key: 'ynls',
     name: '预女猎守',
