@@ -18,4 +18,9 @@ export const ROLE_IDENTITY = {
     }),
 }
 
-export const ROLO_COLOR = {}
+export const PLAYER_STATUS = {
+    EXECUTION: 'EXECUTION', // 投票处决
+    GUN: 'GUN', //枪杀
+    POISON: 'POISON', // 毒杀
+    
+}
