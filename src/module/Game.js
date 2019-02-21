@@ -3,8 +3,11 @@ export default class Game {
         playersCount, // 
         godCount, //
         wolfCount,
-    
-    }) => {
-        return 1;
+        godRole,
+        wolfRole,
+    } = {}) => {
+        return [1];
     }
+
+
 }

@@ -19,8 +19,19 @@ export const ROLE_IDENTITY = {
 }
 
 export const PLAYER_STATUS = {
-    EXECUTION: 'EXECUTION', // 投票处决
-    GUN: 'GUN', //枪杀
-    POISON: 'POISON', // 毒杀
-    
+    EXECUTION: {
+        key: 'EXECUTION',
+        name: '放逐',
+        icon: ''
+    }, // 投票处决
+    GUN: {
+        key: 'GUN',
+        name: '枪杀',
+        icon: '',
+    }, //枪杀
+    POISON: {
+        key: 'POISON',
+        name: '毒杀',
+        icon: '',
+    }, // 毒杀
 }

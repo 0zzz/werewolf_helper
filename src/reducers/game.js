@@ -9,8 +9,7 @@ export default function game (state = INITIAL_STATE, action) {
   const { payload, type } = action;
   switch (type) {
     case GAME.SET_DEFAULT_CONFIG:
-      console.log(payload,CONFIG_MODULE)
-      const players = CONFIG_MODULE.find(module => module.key === payload)[payload]
+      const players = CONFIG_MODULE.find(module => module.key === payload).players
       return {
         ...state,
         players,
