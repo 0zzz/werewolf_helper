@@ -21,7 +21,7 @@ class Index extends Component {
     navigationBarTitleText: '狼人杀助手',
   }
 
-  onSelItem = (key, e) => {
+  onSelItem = (key) => {
     const { setDefaultConfigAction } = this.props;
     setDefaultConfigAction(key);
     Taro.switchTab({

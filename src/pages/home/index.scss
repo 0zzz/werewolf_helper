@@ -1,35 +1,16 @@
 @import "../../styles/color.scss";
 
-.index-page {
-
+.home-page {
     .content {
-        width: 686px;
-        margin:  16px auto 0;
-        
-        
-        .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 168px;
-            padding-left: 16px;
-            margin-bottom: 16px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 0 6px 0.5px rgb(202, 201, 201);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
 
-            .title {
-                padding-bottom: 8px;
-                font-size: 36px;
-                color: $text-main-color;
-            }
-            .details {
-                padding-left: 40px;
-                font-size: 28px;
-                color: $text-sub-color;
-                background: url(../../icons/player.svg) no-repeat 0 50%;
-                background-size: 32px;
-            }
-        }
+    }
+    .player-card {
+        width: 200px;
+        height: 200px;
+        margin: 20px auto;
+        background-color: #fff;
     }
 }

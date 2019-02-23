@@ -1,11 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Picker } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-
-import { setDefaultConfig } from '../../actions/game'
-import { CONFIG_MODULE } from '../../constants/base'
-
-import CusButton from '../../components/CusButton'
 
 
 import './index.scss'
@@ -17,24 +12,52 @@ import './index.scss'
   // setDefaultConfigAction: setDefaultConfig
 })
 class Index extends Component {
+  config = {
+    navigationBarTitleText: '首页',
+  }
+
+  state = {
+    isChangeRole: false,
+  }
 
   componentDidMount() {
     console.log(this.props.game)
   }
+
+  handlePlayerClick = (seatNum,) =>{
+    const { isChangeRole } = this.state;
+    if (isChangeRole) {
+      return;
+    }
+    
+
+  }
   
   render () {
+    const { game: { players } } = this.props;
+    const { isChangeRole } = this.state;
     return (
-      <View className='index-page'>
-        <View className='content'  onClick={this.onSelItem.bind(this)}>
-          {CONFIG_MODULE.map(item => (
+      <View className='home-page'>
+        <View className='content'>
+          {players.map(player => (
+            <Picker 
+              mode='selector' 
+              disabled={!isChangeRole}
+              onClick={this.handlePlayerClick.bind(this, player.seatNum)}
+              range={this.state.selector} 
+              // onChange={this.onChange} 
+              key={player.seatNum}>
             <View 
-              className='card'
-              key={item.key} 
-              id={item.key}
+              className='player-card'
             >
-              <Text className='title' >{`${item.count}人${item.name}`}</Text>
-              <Text className='details'>{item.details}</Text>
+              {player.role.name}
+              当前选择：{this.state.selectorChecked}
+              <View className='seat-num'>
+                <Text>{player.seatNum + 1}</Text>
+              </View>
             </View>
+          </Picker>
+            
           ))}
         </View>
       </View>
