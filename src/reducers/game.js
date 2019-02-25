@@ -4,6 +4,22 @@ import Player from '../module/Player';
 
 const INITIAL_STATE = {
   playersCfg: null,
+  players: null,
+}
+
+const changePlayerRole = (state, payload) => {
+  const { players } = state;
+  const { seatNum, roleKey } = payload;
+  const playerIndex = players.findIndex(player => player.seatNum === seatNum);
+  const playerModule = players[playerIndex];
+  const newPlayerModule = playerModule.changeRole(roleKey)
+  const newPlayers = [].concat(players);
+  
+  newPlayers.splice(playerIndex, 1, newPlayerModule);
+  return {
+    ...state,
+    players: newPlayers,
+  };
 }
 
 export default function game (state = INITIAL_STATE, action) {
@@ -21,6 +37,8 @@ export default function game (state = INITIAL_STATE, action) {
         playersCfg,
         players,
       }
+      case GAME.CHANGE_PALYER_ROLE:
+        return changePlayerRole(state, payload);
      default:
        return state
   }

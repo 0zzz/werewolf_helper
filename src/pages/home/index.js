@@ -1,7 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Picker } from '@tarojs/components'
+import { View, Text, Picker, Checkbox } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
+import { changePlayerRole } from '../../actions/game'
+import { uniqBy } from '../../utils/array'
 
 import './index.scss'
 
@@ -9,7 +11,7 @@ import './index.scss'
 @connect(({ game }) => ({
   game
 }), {
-  // setDefaultConfigAction: setDefaultConfig
+  changePlayerRoleAction: changePlayerRole
 })
 class Index extends Component {
   config = {
@@ -20,6 +22,8 @@ class Index extends Component {
     isChangeRole: false,
   }
 
+  playerPickerRange = [];
+
   componentDidMount() {
     console.log(this.props.game)
   }
@@ -29,34 +33,71 @@ class Index extends Component {
     if (isChangeRole) {
       return;
     }
-    
+    Taro.navigateTo({
+      url: `/pages/detail/index?id=${seatNum}`
+    });
 
+  }
+
+  changeSetRoleState = () => {
+    this.setState(state =>({isChangeRole: !state.isChangeRole}));
+  }
+  
+
+  onPlayerRoleChange = (seatNum, e) => {
+    const { changePlayerRoleAction } = this.props;
+    const { detail: { value }} = e;
+    const roleKey = this.playerPickerRange[value].key;
+    changePlayerRoleAction({
+      seatNum,
+      roleKey
+    })
+    
+  }
+
+  getPlayerPickerRange = () => {
+    const { game: { playersCfg } } = this.props;
+    if (this.playerPickerRange.length === 0) {
+      this.playerPickerRange = uniqBy(playersCfg.map(role => ({
+        value: role.name,
+        key: role.key
+      })), 'value');
+    }
+    return this.playerPickerRange;
   }
   
   render () {
-    const { game: { players } } = this.props;
+    const { game: { players, playersCfg } } = this.props;
     const { isChangeRole } = this.state;
+    if (!playersCfg) {
+      return null;
+    }
+    const playerPickerRange = this.getPlayerPickerRange();
     return (
       <View className='home-page'>
+        <View>
+          <Checkbox  checked={isChangeRole} onClick={this.changeSetRoleState}>改变角色</Checkbox>
+        </View>
         <View className='content'>
           {players.map(player => (
             <Picker 
               mode='selector' 
               disabled={!isChangeRole}
               onClick={this.handlePlayerClick.bind(this, player.seatNum)}
-              range={this.state.selector} 
-              // onChange={this.onChange} 
-              key={player.seatNum}>
-            <View 
-              className='player-card'
+              range={playerPickerRange}
+              rangeKey='value'
+              onChange={this.onPlayerRoleChange.bind(this, player.seatNum)} 
+              key={player.seatNum}
             >
-              {player.role.name}
-              当前选择：{this.state.selectorChecked}
-              <View className='seat-num'>
-                <Text>{player.seatNum + 1}</Text>
+              <View 
+                className='player-card'
+              >
+                {player.role.name}
+                <View className='seat-num'>
+                  <Text>{player.seatNum + 1}</Text>
+                </View>
               </View>
-            </View>
-          </Picker>
+            </Picker>
             
           ))}
         </View>

@@ -6,3 +6,8 @@ export const setDefaultConfig = (key) => {
       payload: key
     }
 }
+
+export const changePlayerRole = ({ seatNum, roleKey }) => ({
+  type: GAME.CHANGE_PALYER_ROLE,
+  payload: { seatNum, roleKey }
+})
