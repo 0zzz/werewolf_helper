@@ -7,28 +7,34 @@
     margin: 20px auto;
     border-radius: 12px;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.08);
-    // color: $text-main-color;
+    color: $text-sub-color;
     background-color: #fff;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 123.6px 123.6px;
 
     .bottom-bar {
         position: absolute;
         bottom: 0;
         left: 0;
+        right: 0;
 
-        padding-left: 15px;
-        font-size: 24px;
-        color: $text-sub-color;
+        display: flex;
+        justify-content: space-between;
+        font-size: 22px;
 
         .role-name {
-            padding-left: 30px;
+            padding-left: 38px;
 
-            background: url('../../icons/role_name.svg');
+            background: url('../../icons/role_name.svg') no-repeat 10px 50%;
+            background-size: 25px 25px;
         }
 
         .num {
-            padding-left: 30px;
-
-            background: url('../../icons/seat.svg'); 
+            padding-left: 28px;
+            padding-right: 10px;
+            background: url('../../icons/seat.svg') no-repeat 0 50%;
+            background-size: 25px 25px;
         }
     }
 }
