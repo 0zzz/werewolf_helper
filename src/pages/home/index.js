@@ -4,6 +4,7 @@ import { connect } from '@tarojs/redux'
 
 import { changePlayerRole } from '../../actions/game'
 import { uniqBy } from '../../utils/array'
+import PlayerItem from '../../components/PlayerItem'
 
 import './index.scss'
 
@@ -89,14 +90,9 @@ class Index extends Component {
               onChange={this.onPlayerRoleChange.bind(this, player.seatNum)} 
               key={player.seatNum}
             >
-              <View 
-                className='player-card'
-              >
-                {player.role.name}
-                <View className='seat-num'>
-                  <Text>{player.seatNum + 1}</Text>
-                </View>
-              </View>
+              <PlayerItem 
+                player={player}
+              />
             </Picker>
             
           ))}

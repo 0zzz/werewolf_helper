@@ -7,8 +7,8 @@ class Player {
         this.role = role || ROLE.UNKNOWN; // 身份类 Role
     }
 
-    changeRole = roleKey => {
-        const newIns = new Player(this);
+    static changeRole = (instance, roleKey) => {
+        const newIns = new Player(instance);
         newIns.role = ROLE[roleKey];
         return newIns;
     }

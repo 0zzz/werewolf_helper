@@ -36,7 +36,7 @@ export const ROLE = {
         name: '女巫',
         camp: ROLE_IDENTITY.GOD,
         key: 'WITCH',
-        icon: '',
+        icon: require('../icons/witch.svg'),
         introduction: '有两瓶药水, 一瓶可以救被杀的人，一瓶可以毒死任何人。同一个夜晚只能使用一瓶药'
     }),
     HUNTER: new Role({

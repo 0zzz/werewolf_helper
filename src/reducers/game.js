@@ -12,7 +12,7 @@ const changePlayerRole = (state, payload) => {
   const { seatNum, roleKey } = payload;
   const playerIndex = players.findIndex(player => player.seatNum === seatNum);
   const playerModule = players[playerIndex];
-  const newPlayerModule = playerModule.changeRole(roleKey)
+  const newPlayerModule = playerModule.changeRole(playerModule, roleKey)
   const newPlayers = [].concat(players);
   
   newPlayers.splice(playerIndex, 1, newPlayerModule);
