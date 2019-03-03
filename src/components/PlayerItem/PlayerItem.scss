@@ -13,6 +13,14 @@
     background-repeat: no-repeat;
     background-size: 123.6px 123.6px;
 
+    &.god {
+        box-shadow: 0 0 10px 2.5px rgba(68, 219, 94, 0.4);
+    }
+
+    &.wolf {
+        box-shadow: 0 0 10px 2.5px rgba(216, 17, 89, 0.4);
+    }
+
     .bottom-bar {
         position: absolute;
         bottom: 0;

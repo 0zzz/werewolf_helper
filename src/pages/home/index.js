@@ -26,7 +26,7 @@ class Index extends Component {
   playerPickerRange = [];
 
   componentDidMount() {
-    console.log(this.props.game)
+
   }
 
   handlePlayerClick = (seatNum,) =>{
@@ -34,9 +34,9 @@ class Index extends Component {
     if (isChangeRole) {
       return;
     }
-    Taro.navigateTo({
-      url: `/pages/detail/index?id=${seatNum}`
-    });
+    // Taro.navigateTo({
+    //   url: `/pages/detail/index?id=${seatNum}`
+    // });
 
   }
 

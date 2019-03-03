@@ -21,7 +21,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.game)
+
   }
 
   handlePlayerClick = (seatNum,) =>{
